@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const sampleUrl = `https://api.github.com/repos/italia/publiccode.yml/contents/version/0.1/example/publiccode.minimal.yml`;
+//const sampleUrl = `https://api.github.com/repos/italia/publiccode.yml/contents/version/0.1/example/publiccode.minimal.yml`;
 
 @connect(
   mapStateToProps,
@@ -35,7 +35,7 @@ export default class sidebar extends Component {
     super(props);
     this.state = {
       dialog: false,
-      remoteYml: sampleUrl
+      remoteYml: null
     };
   }
 
