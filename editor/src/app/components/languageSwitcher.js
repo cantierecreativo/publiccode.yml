@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import available_languages from "../contents/langs";
-//const available_languages = ["ita", "eng", "fra", "zho"];
+import available_languages, {langs_names} from "../contents/langs";
+
 import img_close from "../../asset/img/close.svg";
 
 export default class languageSwitcher extends Component {
@@ -17,14 +17,14 @@ export default class languageSwitcher extends Component {
 
     return (
       <div className="language-switcher">
-        {languages.map(lng => {
+        {languages.map( (lng, index) => {
           let cn = "language-switcher__item";
           if (lng == currentLanguage) {
             cn += " language-switcher__item--selected";
           }
           return (
             <div key={lng} className={cn}>
-              <a onClick={() => this.props.switchLang(lng)}>{lng}</a>
+              <a onClick={() => this.props.switchLang(lng)}>{langs_names[index]}</a>
               <img src={img_close} onClick={() => this.props.removeLang(lng)} />
             </div>
           );
@@ -54,13 +54,13 @@ export default class languageSwitcher extends Component {
             </div>
 
             <div className="language-filter__content">
-              {results.map(lng => (
+              {results.map( (lng, index) => (
                 <a
                   key={lng}
                   className="dropdown-item language-filter__content__item"
                   onClick={() => this.props.switchLang(lng)}
                 >
-                  {lng}
+                  {langs_names[index]}
                 </a>
               ))}
             </div>

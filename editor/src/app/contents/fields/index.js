@@ -22,19 +22,19 @@ const groups = [
 ];
 
 const countrySpec = [
-  {
-    code: "uk",
-    name: "United Kingdom",
-    fields: uk
-  },
-  {
-    code: "us",
-    name: "United States",
-    fields: us
-  },
+  // {
+  //   code: "uk",
+  //   name: "United Kingdom",
+  //   fields: uk
+  // },
+  // {
+  //   code: "us",
+  //   name: "United States",
+  //   fields: us
+  // },
   {
     code: "it",
-    name: "italia",
+    name: "Italy",
     fields: it
   }
 ];

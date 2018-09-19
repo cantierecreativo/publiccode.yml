@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AVAILABLE_COUNTRIES } from "../contents/data";
+import { AVAILABLE_COUNTRIES, COUNTRY_SPEC } from "../contents/data";
 
 const countrySwitcher = props => {
   let { country } = props;
@@ -19,13 +19,13 @@ const countrySwitcher = props => {
         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <div className="scroll">
             {AVAILABLE_COUNTRIES &&
-              AVAILABLE_COUNTRIES.map(c => (
+              AVAILABLE_COUNTRIES.map( (c, index) => (
                 <a
                   key={c}
                   className="dropdown-item"
                   onClick={() => props.switchCountry(c)}
                 >
-                  {c}
+                  {COUNTRY_SPEC[index].name}
                 </a>
               ))}
           </div>

@@ -2,16 +2,14 @@ const langs = [
   "ita",
   "gbr",
   "ger",
-  "fra",
-  "usa"
+  "fra"
 ];
 
-const names = [
-  "Italy",
-  "United Kingdom",
-  "Germany",
-  "France",
-  "United States"
+export const langs_names = [
+  "Italian",
+  "English",
+  "German",
+  "French"
 ];
-exports names
+
 export default langs;

@@ -9,6 +9,7 @@ export const DEPENDSON = "dependsOn";
 export const GROUPS = groups;
 export const SECTIONS = sections;
 export const AVAILABLE_COUNTRIES = available_countries;
+export const COUNTRY_SPEC = countrySpec;
 
 export const getData = async (countryCode = null) => {
   const fields = await fieldsAsync();
