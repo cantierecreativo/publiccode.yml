@@ -145,6 +145,7 @@ export const validateSubTypes = (contents, elements) => {
 
   //validateAll(cloneObj(contents), cloneArray(elements));
   //let e = validateObj(obj, obj_values);
+  //CHECK IF VERSION BEACME BOOLEAN
 
   Object.keys(contents).map(field => {
     let obj = elements.find(item => item.title == field);
