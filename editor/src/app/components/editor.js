@@ -79,6 +79,7 @@ export default class Index extends Component {
   }
 
   async componentDidMount() {
+    console.log(this.props)
     await this.initData();
     this.switchLang("eng");
     this.switchCountry("it");

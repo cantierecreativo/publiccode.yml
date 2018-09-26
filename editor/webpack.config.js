@@ -73,6 +73,9 @@ module.exports = env => {
     resolve: {
       modules: [path.resolve(__dirname, "src"), "node_modules"],
       extensions: [".js", ".jsx", ".json", ".yml"]
+    },
+    devServer: {
+      historyApiFallback: true,
     }
   };
 };
