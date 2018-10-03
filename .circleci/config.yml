@@ -14,12 +14,12 @@ jobs:
     steps:
       - checkout
 
-      - run: cd editor
+      - run: cd editor && ls -la
 
-      - run: ls -la
+      - run: cd editor && pwd
 
-      - run: yarn install
+      - run: cd editor && yarn install
 
-      - run: yarn build
+      - run: cd editor && yarn build
 
-      - run: ls -la
+      - run: cd editor && ls -la
