@@ -16,7 +16,7 @@ jobs:
 
       - run: cd editor
 
-       - run: ls -la
+      - run: ls -la
 
       - run: yarn install
 
