@@ -24,8 +24,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-//const sampleUrl = `https://api.github.com/repos/italia/publiccode.yml/contents/version/0.1/example/publiccode.minimal.yml`;
-
 @connect(
   mapStateToProps,
   mapDispatchToProps
@@ -77,12 +75,10 @@ export default class sidebar extends Component {
 
   load(files) {
     const { onLoad, onReset } = this.props;
-    //has dom
     if (!files || !files[0]) {
       this.props.notify({ type: 1, msg: "File not found" });
       return;
     }
-    // let ext = files[0].name.split(".")[1];
     let ext = files[0].name.split(/[. ]+/).pop();
     if (ext != "yml" && ext != "yaml") {
       this.props.notify({ type: 1, msg: "File type not supported" });
