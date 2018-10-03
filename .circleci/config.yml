@@ -14,10 +14,6 @@ jobs:
     steps:
       - checkout
 
-      - run: cd editor && ls -la
-
-      - run: cd editor && pwd
-
       - run: cd editor && yarn install
 
       - run: cd editor && yarn build
