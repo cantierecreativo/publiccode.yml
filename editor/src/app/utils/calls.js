@@ -15,10 +15,8 @@ export const getRemoteYml = url => {
     .then(data => atob(data.content));
 };
 
-
-/* TODO transform rawgit to api url */
-/*SAMPLE /repos/:owner/:repo/contents/:path*/
-export const getRemoteYmlFromIssue = (owner,repo,path)) => {
- const generated = `https://api.github.com/repos/${owner}/${repo}/contents/${path}}`
- return getRemoteYml(generated)
+export const getRemoteYmlFromIssue = (owner, repo, path) => {
+ const generated = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`
+  return generated
+ // return getRemoteYml(generated)
 };
