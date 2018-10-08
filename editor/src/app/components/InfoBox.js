@@ -21,6 +21,7 @@ const mapDispatchToProps = dispatch => {
   mapStateToProps,
   mapDispatchToProps
 )
+
 export default class InfoBox extends Component {
   constructor(props) {
     super(props);
