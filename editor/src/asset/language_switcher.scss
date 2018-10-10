@@ -16,9 +16,10 @@
   font-size: 18px;
   color: #0066cc;
   margin-right: 10px;
-  height: 70px;
   width: 150px;
+  padding-bottom: $content-pad-horiz / 3;
   text-align: center;
+  font-weight: 600;
 
   a {
     text-transform: capitalize;
@@ -31,15 +32,15 @@
   }
 
   img {
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
     margin-left: 10px;
     cursor: pointer;
   }
 }
 
 .language-switcher__item--selected {
-  border-bottom: 1px solid #0066cc;
+  border-bottom: 2px solid #0066cc;
 }
 
 .language-switcher__link {
