@@ -31,7 +31,7 @@ export default class foot extends Component {
             className="editor_button  editor_button--custom"
             onClick={() => this.props.reset()}
           >
-            Reset
+            Azzera tutto
           </button>
         </div>
         <div className="content__foot_item">
@@ -46,11 +46,10 @@ export default class foot extends Component {
               }, 250);
             }}
           >
-            Generate
+            Salva
           </button>
         </div>
       </div>
     );
   }
 }
-//disabled={form[APP_FORM].submitFailed && form[APP_FORM].syncErrors}
