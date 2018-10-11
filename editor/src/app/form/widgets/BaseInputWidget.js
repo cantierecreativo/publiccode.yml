@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Field } from "redux-form";
 import Info from "../../components/Info";
+import TextField from '@material-ui/core/TextField';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const renderInput = field => {
   const className = classNames([
@@ -45,20 +47,52 @@ const renderInput = field => {
 };
 
 const BaseInputWidget = props => {
-  return (
-    <Field
-      component={renderInput}
-      label={props.label}
-      name={props.fieldName}
-      required={props.required}
-      id={"field-" + props.fieldName}
-      placeholder={props.schema.default}
-      description={props.schema.description}
-      type={props.type}
-      normalize={props.normalizer}
-      {...props}
-    />
-  );
+
+  if (props.type == 'date') {
+    return (
+      <TextField
+        margin='dense'
+        id={"field-" + props.fieldName}
+        type="date"
+        label={props.label}
+        name={props.fieldName}
+        required={props.required}
+        description={props.schema.description}
+        placeholder={props.schema.default}
+        normalize={props.normalizer}
+        InputLabelProps={{
+          shrink: true
+        }}
+      />
+    )
+  } else {
+    return (
+      <TextField
+        margin='dense'
+        id={"field-" + props.fieldName}
+        type={props.type}
+        label={props.label}
+        name={props.fieldName}
+        required={props.required}
+        description={props.schema.description}
+        placeholder={props.schema.default}
+        normalize={props.normalizer}
+      />
+    )
+  }
+
+    // <Field
+    //   component={renderInput}
+    //   label={props.label}
+    //   name={props.fieldName}
+    //   required={props.required}
+    //   id={"field-" + props.fieldName}
+    //   placeholder={props.schema.default}
+    //   description={props.schema.description}
+    //   type={props.type}
+    //   normalize={props.normalizer}
+      // {...props}
+    // />
 };
 
 BaseInputWidget.propTypes = {
