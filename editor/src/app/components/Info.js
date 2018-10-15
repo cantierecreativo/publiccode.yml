@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { show } from "../store/infobox";
+import { FormattedMessage } from "react-intl";
 
 const ReadMore = props => {
   if (!props.description) return null;
@@ -50,11 +51,10 @@ export default class InfoBox extends Component {
                 href="#"
                 className="link"
                 onClick={() => {
-                  console.log("CLICK", description);
-                  this.props.show({  title,  description });
+                  this.props.show({ title, description });
                 }}
               >
-                Read more
+                <FormattedMessage id={action_read_more} />
               </a>
             </span>
           )}
