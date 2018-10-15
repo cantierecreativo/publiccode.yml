@@ -5,6 +5,7 @@ import { Field } from "redux-form";
 import RichTextEditor from "react-rte";
 import Info from "../../components/Info";
 
+
 const emptyVal = RichTextEditor.createEmptyValue();
 
 class MyEditor extends Component {

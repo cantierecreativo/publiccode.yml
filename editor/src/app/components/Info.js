@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { show } from "../store/infobox";
-import { FormattedMessage } from "react-intl";
+import { injectIntl, formatMessage, FormattedMessage } from "react-intl";
 
 const ReadMore = props => {
   if (!props.description) return null;
@@ -33,19 +33,21 @@ const mapDispatchToProps = dispatch => {
   mapStateToProps,
   mapDispatchToProps
 )
-export default class InfoBox extends Component {
+class InfoBox extends Component {
   constructor(props) {
     super(props);
   }
   render() {
+    const { intl } = this.props;
     if (!(this.props.title || this.props.description)) return null;
     let { title, description } = this.props;
-    let partial = ellipsis(description);
+    const text = intl.formatMessage({ id: description });
+    let partial = ellipsis(text);
     return (
       <div className="field_info">
         <small className="form-text text-muted">
           <span>{partial}</span>
-          {description.length > MAX_LEN && (
+          {partial.length > MAX_LEN && (
             <span>
               <a
                 href="#"
@@ -54,7 +56,7 @@ export default class InfoBox extends Component {
                   this.props.show({ title, description });
                 }}
               >
-                <FormattedMessage id={action_read_more} />
+                <FormattedMessage id={"action_read_more"} />
               </a>
             </span>
           )}
@@ -63,3 +65,4 @@ export default class InfoBox extends Component {
     );
   }
 }
+export default injectIntl(InfoBox);

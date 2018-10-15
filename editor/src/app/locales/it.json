@@ -9,7 +9,7 @@
 
   "action_reset": "Azzera tutto",
   "action_save": "Salva",
-  "action_read_more": "Leggi tutto",
+  "action_read_more": "Leggi",
 
   "spid": "SPID",
   "cie": "CIE",
@@ -96,8 +96,8 @@
   "application_suite_description": "This key contains the name of the 'suite' to which the software belongs.",
   "landing_page_url_description": "If the url parameter does not serve a human readable or browsable page, but only serves source code to a source control client, with this key you have an option to specify a landing page. This page, ideally, is where your users will land when they will click a button labeled something like 'Go to the application source code'. In case the product provides an automated graphical installer, this URL can point to a page which contains a reference to the source code but also offers the download of such an installer.",
   "localised_name_description": "localisedName",
-  "short_description": "A short description is isRequired",
-  "long_description": "A long description is isRequired",
+  "short_description_description": "A short description is isRequired",
+  "long_description_description": "A long description is isRequired",
   "documentation_description": "link to documentation",
   "api_documentation_description": "link to the api documentation",
   "free_tags_description": "a list of tags",
