@@ -10,7 +10,7 @@ import img_upload from "../../asset/img/load.svg";
 import img_download from "../../asset/img/download.svg";
 import img_dots from "../../asset/img/dots.svg";
 import img_xx from "../../asset/img/xx.svg";
-
+import { FormattedMessage } from "react-intl";
 import { getRemoteYml } from "../utils/calls";
 import { getLabel } from "../contents/data";
 
@@ -148,7 +148,7 @@ export default class sidebar extends Component {
                 {Object.keys(errors).map((e, i) => (
                   <div key={i}>
                     <img src={img_x} />
-                    {getLabel(allFields, e)}
+                    <FormattedMessage id={getLabel(allFields, e)} />
                   </div>
                 ))}
               </div>
@@ -189,7 +189,8 @@ export default class sidebar extends Component {
                     className="btn btn-primary btn-block"
                     onClick={() => document.getElementById("load_yaml").click()}
                   >
-                    <img src={img_upload} alt="upload" />Browse
+                    <img src={img_upload} alt="upload" />
+                    Browse
                   </button>
                 </div>
               </div>
@@ -208,7 +209,8 @@ export default class sidebar extends Component {
                       onChange={e => this.handleChange(e)}
                     />
                     <button type="submit" className="btn btn-primary">
-                      <img src={img_upload} alt="upload" />Load
+                      <img src={img_upload} alt="upload" />
+                      Load
                     </button>
                   </form>
                 </div>

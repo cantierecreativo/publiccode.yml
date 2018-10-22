@@ -46,6 +46,8 @@ const renderNuShit = field => {
     "form-group",
     { "has-error": field.meta.touched && field.meta.error }
   ]);
+  let error = field.meta.touched != null && field.meta.error != null;
+  console.log("ERROR?", field.fieldName, error);
 
   return (
     <div style={{ border: "1px solid red" }}>
@@ -56,8 +58,8 @@ const renderNuShit = field => {
         name={field.fieldName}
         required={field.required}
         placeholder={field.schema.default}
-        InputLabelProps={
-          field.type == "date"? { shrink: true } : {}}
+        error={error}
+        InputLabelProps={field.type == "date" ? { shrink: true } : {}}
       />
 
       {field.meta.touched &&
@@ -85,7 +87,6 @@ const BaseInputWidget = props => {
     />
   );
 };
-
 
 const Manzo_BaseInputWidget = props => {
   if (props.type == "date") {
@@ -135,7 +136,6 @@ const Manzo_BaseInputWidget = props => {
   // {...props}
   // />
 };
-
 
 BaseInputWidget.propTypes = {
   schema: PropTypes.object.isRequired,

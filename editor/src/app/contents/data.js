@@ -25,13 +25,13 @@ export const getFieldByTitle = (allFields, title) => {
   return allFields.find(field => field.title === title);
 };
 
-// export const getLabel = (allFields, title) => {
-//   let field = allFields.find(field => field.title === title);
-//   if (field) {
-//     return field.label ? formatMessage(field.label) : field.title;
-//   }
-//   return null;
-// };
+export const getLabel = (allFields, title) => {
+  let field = allFields.find(field => field.title === title);
+  if (field) {
+    return field.label ? field.label : field.title;
+  }
+  return null;
+};
 
 
 
