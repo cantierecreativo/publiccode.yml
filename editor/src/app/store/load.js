@@ -1,28 +1,24 @@
 import { createAction, handleActions } from "redux-actions";
 
-export const SHOW_INFO = "SHOW_INFO";
-export const HIDE_INFO = "HIDE_INFO";
+export const SET_URL = "SET_URL";
+export const RESET_URL = "RESET_URL";
 
-export const show = createAction(SHOW_INFO);
-export const hide = createAction(HIDE_INFO);
+export const setUrl = createAction(SET_URL);
+export const resetUrl = createAction(RESET_URL);
 
 const initialState = {
-  owner: null,
-  repo: null,
-  path: null
+  url: null
 };
 
 const reducer = handleActions(
   {
-    SHOW_INFO: (state, action) => {
+    SET_URL: (state, action) => {
       return {
         ...state,
-        owner: action.payload.owner,
-        repo: action.payload.repo,
-        path: action.payload.path,
+        url: action.payload.url,
       };
     },
-    HIDE_INFO: (state, action) => initialState
+    RESET_URL: (state, action) => initialState
   },
   initialState
 );

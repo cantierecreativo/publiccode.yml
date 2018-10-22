@@ -13,14 +13,19 @@ import img_xx from "../../asset/img/xx.svg";
 import { FormattedMessage } from "react-intl";
 import { getRemoteYml } from "../utils/calls";
 import { getLabel } from "../contents/data";
+import { resetUrl } from "../store/load";
 
 function mapStateToProps(state) {
-  return { form: state.form };
+  return {
+    form: state.form
+    //load: state.load
+  };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    notify: data => dispatch(notify(data))
+    notify: data => dispatch(notify(data)),
+    resetUrl: () => dispatch(resetUrl())
   };
 };
 
@@ -45,10 +50,22 @@ export default class sidebar extends Component {
     this.setState({ remoteYml: e.target.value });
   }
 
-  async loadRemoteYaml(e) {
-    e.preventDefault();
+
+  componentWillMount() {
+    if (this.props.url) {
+      console.log("SIDEBAR  URL", this.props.url);
+      this.loadRemoteYaml(null, this.props.url);
+    }
+  }
+
+  async loadRemoteYaml(e = null, url = null) {
+    console.log("LOAD REMOTE URL");
+    if (e) e.preventDefault();
     const { onLoad, onReset } = this.props;
     let { remoteYml } = this.state;
+    if (url) {
+      remoteYml = url;
+    }
     this.showDialog(false);
 
     if (!remoteYml || !validator.isURL(remoteYml)) {
@@ -67,6 +84,10 @@ export default class sidebar extends Component {
     try {
       yaml = await getRemoteYml(remoteYml);
       onLoad(yaml);
+
+      if (url) {
+        this.props.resetUrl();
+      }
     } catch (error) {
       console.error(error);
       alert("error parsing remote yaml");
