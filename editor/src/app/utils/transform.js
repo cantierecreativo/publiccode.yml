@@ -23,8 +23,7 @@ const extractGroup = (items, group) => {
 };
 
 export const getGrouped = data => {
-  let result = _
-    .chain(data)
+  let result = _.chain(data)
     .groupBy("group")
     .map((values, group) => ({ values, group }))
     .value();
@@ -165,13 +164,20 @@ const transformBooleanValues = obj => {
       obj[k] = transformBooleanValues(Object.assign({}, obj[k]));
     } else if (
       !Array.isArray(obj[k]) &&
-      (obj[k] == true ||
-        obj[k] == false ||
-        obj[k] == "true" ||
-        obj[k] == "false")
+      (obj[k] === true ||
+        obj[k] === false ||
+        obj[k] === "true" ||
+        obj[k] === "false")
     ) {
-      if (obj[k] == true || obj[k] == "true") obj[k] = "yes";
-      else delete obj[k];
+      // console.log("BOOLEAN", k, obj[k]);
+      // if (obj[k] === true) {
+      //   console.log("IS TRUE", k, obj[k]);
+      // }
+      if (obj[k] === true || obj[k] === "true") {
+        obj[k] = "yes";
+      } else {
+        delete obj[k];
+      }
     }
   });
   return obj;
