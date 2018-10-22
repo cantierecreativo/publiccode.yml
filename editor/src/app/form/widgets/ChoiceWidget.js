@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { Field } from "redux-form";
 import { zipObject as _zipObject, map as _map } from "lodash";
 import Info from "../../components/Info";
+import { FormattedMessage } from "react-intl";
 
 const renderSelect = field => {
   const className = classNames([
@@ -18,7 +19,8 @@ const renderSelect = field => {
     <div className={className}>
       {field.showLabel && (
         <label className="control-label" htmlFor={"field-" + field.name}>
-          {field.label} {field.schema.required ? "*" : ""}
+          <FormattedMessage id={field.label} />
+          {field.schema.required ? "*" : ""}
         </label>
       )}
 

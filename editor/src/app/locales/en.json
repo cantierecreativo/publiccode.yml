@@ -10,7 +10,9 @@
   "action_reset": "Reset all",
   "action_save": "Save",
   "action_read_more": "Read more",
+  "need_help": "Need help?",
 
+  "no_code_generated": "No code generated.",
   "publiccode_yaml_version": "Publiccode Yaml Version",
   "name_of_the_software": "Name of the software",
   "release_date": "Release Date",
@@ -48,6 +50,7 @@
   "output_types": "Output Types",
   "localisation_ready": "Localisation Ready",
   "available_languages": "Available Languages",
+  "add_language": " + Add language",
   "maintenance_type": "Maintenance Type",
   "contacts": "Contacts",
   "contact": "Contact",

@@ -81,7 +81,9 @@ const renderInput = field => {
 
   return (
     <div className={className}>
-      <legend className="control-label">{field.label}</legend>
+      <legend className="control-label">
+        <FormattedMessage id={field.label} />
+      </legend>
       {field.meta.submitFailed &&
         field.meta.error && (
           <span className="help-block">{field.meta.error}</span>

@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Field } from "redux-form";
+import { FormattedMessage } from "react-intl";
 
 const renderInput = field => {
   const className = classNames([
@@ -11,7 +12,7 @@ const renderInput = field => {
   return (
     <div className={className}>
       <label className="control-label" htmlFor={"field-" + field.name}>
-        {field.label}
+        <FormattedMessage id={field.label} />
       </label>
       <div className="input-group">
         <input

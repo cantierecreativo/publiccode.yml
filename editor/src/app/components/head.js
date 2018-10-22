@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { repositoryUrl } from "../contents/constants";
 import moment from "moment";
+import { FormattedMessage } from "react-intl";
 
 let timer = null;
 class head extends Component {
@@ -54,7 +55,7 @@ class head extends Component {
         <div className="content__head__help">
           <div>
             <a href={repositoryUrl} target="_blank">
-              Need help?
+              <FormattedMessage id={"need_help"} />
             </a>
           </div>
           <div>

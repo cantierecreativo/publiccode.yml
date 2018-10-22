@@ -1,6 +1,7 @@
 import React from "react";
 import { Field } from "redux-form";
 import classNames from "classnames";
+import { FormattedMessage } from "react-intl";
 
 const processFile = (onChange, e) => {
   const files = e.target.files;
@@ -25,7 +26,7 @@ const File = field => {
   return (
     <div className={className}>
       <label className="control-label" htmlFor={field.id}>
-        {field.label}
+        <FormattedMessage id={field.label} />
       </label>
       <input
         name={field.name}

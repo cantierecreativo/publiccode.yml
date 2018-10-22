@@ -162,7 +162,7 @@ export default class sidebar extends Component {
 
         <div className="sidebar__body">
           {!fail &&
-            !yaml && <div className="sidebar__info">No code generated.</div>}
+            !yaml && <div className="sidebar__info"><FormattedMessage id={"no_code_generated"} /></div>}
           {fail &&
             errors && (
               <div className="sidebar__error">
@@ -255,7 +255,7 @@ export default class sidebar extends Component {
                   });
                 }}
               >
-                Copy
+                <FormattedMessage id={"copy"} />
               </span>
             </a>
           </div>
@@ -263,7 +263,7 @@ export default class sidebar extends Component {
             <a href="#">
               <img src={img_upload} alt="upload" />
               <span className="action" onClick={() => this.showDialog(true)}>
-                Upload
+                <FormattedMessage id={"upload"} />
               </span>
             </a>
           </div>
@@ -271,7 +271,7 @@ export default class sidebar extends Component {
             <a href="#">
               <img src={img_download} alt="dowload" />
               <span className="action" onClick={() => this.download(yaml)}>
-                Download
+                <FormattedMessage id={"download"} />
               </span>
             </a>
           </div>

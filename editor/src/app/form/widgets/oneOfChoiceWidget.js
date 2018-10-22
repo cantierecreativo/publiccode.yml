@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import renderField from "../renderField";
 import { map as _map } from "lodash";
 import Info from "../../components/Info";
+import { FormattedMessage } from "react-intl";
 
 class OneOfChoiceWidget extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class OneOfChoiceWidget extends Component {
     return (
       <div className={className}>
         <label className="control-label" htmlFor={"field-" + field.fieldName}>
-          {schema.title}
+          <FormattedMessage id={schema.title} />
         </label>
         <select
           className="form-control"

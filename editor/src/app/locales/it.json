@@ -10,7 +10,13 @@
   "action_reset": "Azzera tutto",
   "action_save": "Salva",
   "action_read_more": "Leggi",
+  "need_help": "Bisogno di aiuto?",
 
+  "copy": "Copia",
+  "download": "Scarica",
+  "upload": "Carica",
+
+  "no_code_generated": "Nessun codice generato.",
   "publiccode_yaml_version": "Versione YamlPubliccode",
   "name_of_the_software": "Nome del software",
   "release_date": "Data di rilasico",
@@ -48,6 +54,7 @@
   "output_types": "Output Types",
   "localisation_ready": "Localisation Ready",
   "available_languages": "Lingue Disponibili",
+  "add_language": " + Aggiungi lingua",
   "maintenance_type": "Tipologia Manutenzione",
   "contacts": "Contatti",
   "contact": "Contatto",

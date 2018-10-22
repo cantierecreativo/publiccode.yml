@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import available_languages, {langs_names} from "../contents/langs";
+import { FormattedMessage } from "react-intl";
 
 import img_close from "../../asset/img/close.svg";
 
@@ -37,7 +38,7 @@ export default class languageSwitcher extends Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            <a> + Add Language </a>
+            <a><FormattedMessage id={"add_language"} /></a>
           </div>
           <div
             className="dropdown-menu language-filter"

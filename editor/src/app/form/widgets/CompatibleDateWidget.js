@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { Field } from "redux-form";
 import DateSelector from "./DateSelector";
 import Info from "../../components/Info";
+import { FormattedMessage } from "react-intl";
 
 // produces an array [start..end-1]
 const range = (start, end) =>
@@ -77,7 +78,7 @@ class CompatibleDate extends React.Component {
     return (
       <div className={className}>
         <label className="control-label" htmlFor={field.id}>
-          {field.label}
+          <FormattedMessage id={field.label} />
         </label>
         <ul className="list-inline">
           <li>
