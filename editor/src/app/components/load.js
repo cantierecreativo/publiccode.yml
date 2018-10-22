@@ -32,6 +32,7 @@ export default class Load extends Component {
   render() {
     const { url } = this.props;
     // return <div>{url}</div>;
+
     //http://localhost:3000/load?owner=teamdigitale&repo=daf-models&path=pubbliccode.yml
 
     return (
