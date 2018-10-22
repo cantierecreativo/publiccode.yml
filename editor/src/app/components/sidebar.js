@@ -156,7 +156,7 @@ export default class sidebar extends Component {
     return (
       <div className="sidebar">
         <div className="sidebar__title">
-          {fail == true ? "Errors" : "File YAML"}
+          {fail == true ? <FormattedMessage id={"errors"} /> : <FormattedMessage id={"file"} /> }
           {loading && <img src={img_dots} className="loading" />}
         </div>
 

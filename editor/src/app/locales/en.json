@@ -1,4 +1,6 @@
 {
+  "errors": "Errors",
+  "file": "YAML File",
   "section_maininfo": "Main information",
   "section_specification": "Specification",
   "section_multimedia": "Multimedia",
