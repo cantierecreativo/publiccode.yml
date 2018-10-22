@@ -47,19 +47,19 @@ const renderNuShit = field => {
     { "has-error": field.meta.touched && field.meta.error }
   ]);
   let error = field.meta.touched != null && field.meta.error != null;
-  console.log("ERROR?", field.fieldName, error);
-
+  const label = field.showLabel ? <FormattedMessage id={field.label} /> : null;
   return (
     <div style={{ border: "1px solid red" }}>
       <TextField
         margin="dense"
         type={field.type}
-        label={<FormattedMessage id={field.label} />}
+        label={label}
         name={field.fieldName}
         required={field.required}
         placeholder={field.schema.default}
         error={error}
         InputLabelProps={field.type == "date" ? { shrink: true } : {}}
+        {...field.input}
       />
 
       {field.meta.touched &&
