@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { Field } from "redux-form";
 import RichTextEditor from "react-rte";
 import Info from "../../components/Info";
+import { FormattedMessage } from "react-intl";
 
 const emptyVal = RichTextEditor.createEmptyValue();
 
@@ -72,7 +73,7 @@ const renderInput = field => {
   return (
     <div className={className}>
       <label className="control-label" htmlFor={"field-" + field.name}>
-        {field.label} {field.required ? "*" : ""}
+        <FormattedMessage id={field.label} /> {field.required ? "*" : ""}
       </label>
       <div className="form-control editor__wrapper">
         <MyEditor

@@ -18,72 +18,64 @@ const it = [
     section: 6,
     group: "it",
     title: "spid",
-    label: "SPID",
+    label: "spid",
     type: "boolean",
-    description:
-      "Se presente e impostato a yes, il software si interfaccia con SPID - il Sistema Pubblico di Identità Digitale."
+    description: "spid_description"
   },
   {
     section: 6,
     group: "it",
     title: "cie",
-    label: "CIE",
+    label: "cie",
     type: "boolean",
-    description:
-      "Se presente e impostato a yes, il software si interfaccia con la Carta di Identità Elettronica."
+    description: "cie_description"
   },
   {
     section: 6,
     group: "it",
     title: "anpr",
-    label: "ANPR",
+    label: "anpr",
     type: "boolean",
-    description:
-      "Se presente e impostato a yes, il software si interfaccia con ANPR."
+    description: "anpr_description"
   },
   {
     section: 6,
     group: "it",
     title: "pagopa",
-    label: "PagoPA",
+    label: "pagopa",
     type: "boolean",
-    description:
-      "Se presente e impostato a yes, il software si interfaccia con PagoPA."
+    description: "pagopa_description"
   },
   {
     section: 6,
     group: "it",
     title: "conforme",
-    label: "Conforme",
+    label: "conforme",
     type: "object",
     properties: {
       accessibile: {
         title: "accessibile",
-        label: "Accessibile",
+        label: "accessibile",
         type: "boolean",
-        description:
-          "Se presente e impostato a yes, il software è conforme alle leggi in materia di accessibilità (L. 4/2004), come descritto ulteriormente nelle linee guida di design."
+        description: "accessibile_description"
       },
       interoperabile: {
         title: "interoperabile",
-        label: "Interoperabile",
+        label: "interoperabile",
         type: "boolean",
-        description:
-          "Se presente e impostato a yes, il software è conforme alle linee guida sull'interoperabilità.Riferimento normativo: Art. 73 del CAD."
+        description: "interoperabile_description"
       },
       sicuro: {
         title: "sicuro",
-        label: "Sicuro",
+        label: "sicuro",
         type: "boolean",
-        description:
-          "Se presente e impostato a yes, il software è conforme alle Misure minime di sicurezza ICT per le Pubbliche amministrazioni."
+        description: "sicuro_description"
       },
       privacy: {
         title: "privacy",
-        label: "Privacy",
+        label: "privacy",
         type: "boolean",
-        description:
-          "Se presente e impostato a yes, il software rispetta le linee guida del Garante per la protezione dei dati personali."
+        description: "privacy_description"
       }
     }
   },
@@ -92,26 +84,23 @@ const it = [
     section: 6,
     group: "it",
     title: "riuso",
-    label: "Riuso",
+    label: "riuso",
     type: "object",
     properties: {
       codiceIPA: {
         title: "codiceIPA",
-        label: "Codice IPA",
+        label: "codice_ipa",
         type: "string",
-        description:
-          "Questa chiave rappresenta il codice dell'amministrazione all'interno dell'Indice delle Pubbliche Amministrazioni (codice IPA) Il parser applicherà il corretto prefisso al valore dato a questa chiave per creare un'URI identificativa, una volta che questo sarà definito. L'URI sarà riconducibile a http://w3id.org/italia/data secondo la politica degli URI adottata in ambito DAF."
+        description: "codice_ipa_description"
       },
       ecosistemi: {
         type: "array",
         title: "ecosistemi",
-        label: "Ecosistemi",
-        description:
-          "Values: web, windows, mac, linux, ios, android. Human readable values outside this list are allowed",
-        examples: ["android", "ios"],
+        label: "ecosistemi",
+        description: "ecosistemi_description",
         items: {
           title: "ecosistema",
-          label: "Ecosistema",
+          label: "ecosistema",
           type: "string",
           enum: ecosistemi_list
         },
@@ -123,36 +112,32 @@ const it = [
     section: 6,
     group: "it",
     title: "designKit",
-    label: "Design Kit",
+    label: "design_kit",
     type: "object",
     properties: {
       seo: {
         title: "seo",
-        label: "SEO",
+        label: "seo",
         type: "boolean",
-        description:
-          "Se presente e impostato a yes, il software ha utilizzato, in fase di progettazione, il kit di SEO di Designers Italia."
+        description: "seo_description"
       },
       ui: {
         title: "ui",
-        label: "UI",
+        label: "ui",
         type: "boolean",
-        description:
-          "Se presente e impostato a yes, il software ha utilizzato, in fase di progettazione, il kit UI di Designers Italia."
+        description: "ui_description"
       },
       web: {
         title: "web",
-        label: "Web",
+        label: "web",
         type: "boolean",
-        description:
-          "Se presente e impostato a yes, il software utilizza il kit per lo sviluppo web di Designers Italia."
+        description: "web_description"
       },
       content: {
         title: "content",
-        label: "Content",
+        label: "content",
         type: "boolean",
-        description:
-          "Se presente e impostato a yes, il software ha utilizzato, in fase di progettazione, il kit per la scrittura del contenuto di Designers Italia."
+        description: "content_description"
       }
     }
   }

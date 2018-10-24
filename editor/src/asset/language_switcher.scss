@@ -14,11 +14,13 @@
 .language-switcher__link,
 .language-switcher__item {
   font-size: 18px;
-  color: #0066cc;
+  color: #0073E6;
   margin-right: 10px;
-  height: 70px;
   width: 150px;
+  padding-bottom: $content-pad-horiz / 3;
   text-align: center;
+  font-weight: 600;
+  cursor: pointer;
 
   a {
     text-transform: capitalize;
@@ -31,21 +33,22 @@
   }
 
   img {
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
     margin-left: 10px;
     cursor: pointer;
+    vertical-align: unset;
   }
 }
 
 .language-switcher__item--selected {
-  border-bottom: 1px solid #0066cc;
+  border-bottom: 2px solid #0073E6;
 }
 
 .language-switcher__link {
   font-size: 18px;
   margin-bottom: 10px;
-  color: #0066cc;
+  color: #0073E6;
 }
 
 .language-filter__dropdown {

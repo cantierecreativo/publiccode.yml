@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Field } from "redux-form";
 import Info from "../../components/Info";
+import { FormattedMessage } from "react-intl";
 
 const renderInput = field => {
   const className = classNames([
@@ -21,7 +22,8 @@ const renderInput = field => {
           id={"field-" + field.name}
         />
         <label className="form-check-label">
-          {field.label} {field.required ? "*" : ""}
+          <FormattedMessage id={field.label} />
+          {field.required ? "*" : ""}
         </label>
       </div>
       {field.meta.touched &&

@@ -9,18 +9,19 @@ import img_x from "../../asset/img/x.svg";
 import img_accordion_open from "../../asset/img/accordion-open.svg";
 import img_accordion_closed from "../../asset/img/accordion-closed.svg";
 import { getFieldByTitle } from "../contents/data";
+import { FormattedMessage } from "react-intl";
 
-const renderBlocksSimple = blocks => {
-  return blocks.map((block, i) => (
-    <div className="block__wrapper" key={`block_${i}`}>
-      <div className="block_heading">
-        <div className="block_heading_oval">{block.index}</div>
-        <div className="block_heading_title">{block.title}</div>
-      </div>
-      <div className="block collapse">{renderBlockItems(block.items, i)}</div>
-    </div>
-  ));
-};
+// const renderBlocksSimple = blocks => {
+//   return blocks.map((block, i) => (
+//     <div className="block__wrapper" key={`block_${i}`}>
+//       <div className="block_heading">
+//         <div className="block_heading_oval">{block.index}</div>
+//         <div className="block_heading_title">{block.title}</div>
+//       </div>
+//       <div className="block collapse">{renderBlockItems(block.items, i)}</div>
+//     </div>
+//   ));
+// };
 
 const renderBlockItems = (items, id) => {
   return items.map((item, i) => {

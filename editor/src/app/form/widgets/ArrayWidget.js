@@ -7,6 +7,7 @@ import ChoiceWidget from "./ChoiceWidget";
 import classNames from "classnames";
 import Info from "../../components/Info";
 import img_close from "../../../asset/img/close.svg";
+import { FormattedMessage } from "react-intl";
 
 const renderArrayFields = (
   count,
@@ -63,7 +64,7 @@ const renderInput = field => {
     <div className={className}>
       {field.showLabel && (
         <label className="control-label">
-          {field.label} {field.schema.required ? "*" : ""}
+          <FormattedMessage id={field.label} />{field.schema.required ? "*" : ""}
         </label>
       )}
       {field.meta.error && <div className="help-block">{field.meta.error}</div>}

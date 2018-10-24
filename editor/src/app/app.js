@@ -4,7 +4,7 @@ import store from "./store/index";
 import { Provider } from "react-redux";
 import Layout from "./components/_layout";
 // import Index from "./components/index";
-import Index from "./components/editor";
+import Editor from "./components/editor";
 import Load from "./components/load";
 import { IntlProvider } from "react-intl";
 import { getLocale } from "./components/locale"
@@ -48,7 +48,7 @@ export default class App extends Component {
           <Layout>
             <BrowserRouter>
               <Switch>
-                <Route exact path='/' component={Index} />
+                <Route exact path='/' component={Editor} />
                 <Route path='/load' component={Load} />
               </Switch>
             </BrowserRouter>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { submit } from "redux-form";
 import { APP_FORM } from "../contents/constants";
+import {  FormattedMessage } from 'react-intl';
 
 function mapStateToProps(state) {
   return { form: state.form };
@@ -31,7 +32,7 @@ export default class foot extends Component {
             className="editor_button  editor_button--custom"
             onClick={() => this.props.reset()}
           >
-            Reset
+            <FormattedMessage id="action_reset" />
           </button>
         </div>
         <div className="content__foot_item">
@@ -46,11 +47,10 @@ export default class foot extends Component {
               }, 250);
             }}
           >
-            Generate
+           <FormattedMessage id="action_save" />
           </button>
         </div>
       </div>
     );
   }
 }
-//disabled={form[APP_FORM].submitFailed && form[APP_FORM].syncErrors}

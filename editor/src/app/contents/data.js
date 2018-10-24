@@ -33,6 +33,8 @@ export const getLabel = (allFields, title) => {
   return null;
 };
 
+
+
 const generateBlocks = allFields => {
   return sections.map((s, i) => {
     let fields = allFields.filter(obj => obj.section === i);

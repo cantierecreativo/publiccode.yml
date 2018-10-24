@@ -3,43 +3,46 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Field } from "redux-form";
 import Info from "../../components/Info";
+import { FormattedMessage } from "react-intl";
+import { TextField, InputLabel } from "@material-ui/core";
 
-const renderInput = field => {
+const Input = field => {
+
+  let error = field.meta.touched && field.meta.error;
   const className = classNames([
     "form-group",
-    { "has-error": field.meta.touched && field.meta.error }
+    { "has-error": error }
   ]);
-
-  // let type = field.type;
-  // if (field.schema.widget) {
-  //   console.log("WIDGET", field.schema.widget);
-  // }
+  const label = field.showLabel ? <FormattedMessage id={field.label} /> : null;
+  console.log("ERROR?", field.fieldName, error);
 
   return (
-    <div className={className}>
-      {field.showLabel && (
-        <label className="control-label" htmlFor={field.id}>
-          {field.label} {field.required ? "*" : ""}
-        </label>
-      )}
-
-      <input
-        {...field.input}
+    <div 
+      className={className}
+    >
+      <TextField
+        margin="dense"
         type={field.type}
+        label={label}
+        name={field.fieldName}
         required={field.required}
-        className="form-control"
-        placeholder={field.placeholder}
+        placeholder={field.schema.default}
+        error={error}
+        InputLabelProps={field.type == "date" ? { shrink: true } : {}}
+        {...field.input}
       />
-      {field.meta.touched &&
-        field.meta.error && (
-          <span className="help-block">{field.meta.error}</span>
+      <div>
+        {field.meta.touched &&
+          field.meta.error && (
+            <span className="help-block">{field.meta.error}</span>
         )}
-      {field.description && (
-        <Info
-          title={field.label ? field.label : field.name}
-          description={field.description}
-        />
-      )}
+        {field.description && (
+          <Info
+            title={field.label ? field.label : field.name}
+            description={field.description}
+          />
+        )}
+      </div>
     </div>
   );
 };
@@ -47,15 +50,10 @@ const renderInput = field => {
 const BaseInputWidget = props => {
   return (
     <Field
-      component={renderInput}
-      label={props.label}
+      component={Input}
       name={props.fieldName}
-      required={props.required}
       id={"field-" + props.fieldName}
-      placeholder={props.schema.default}
       description={props.schema.description}
-      type={props.type}
-      normalize={props.normalizer}
       {...props}
     />
   );

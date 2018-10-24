@@ -79,7 +79,10 @@ export default class Index extends Component {
   }
 
   async componentDidMount() {
-    console.log(this.props)
+    // console.log(this.props)
+
+    console.log("FROM LOAD? ", this.props.location.state);
+
     await this.initData();
     this.switchLang("eng");
     this.switchCountry("it");
@@ -239,12 +242,18 @@ export default class Index extends Component {
 
   renderSidebar() {
     //c with state
+    let url = null;
+    if (this.props && this.props.location && this.props.location.state) {
+      url = this.props.location.state.url;
+    }
+
     let { yaml, loading, values, allFields } = this.state;
     let props = {
       yaml,
       loading,
       values,
       allFields,
+      url,
       onLoad: this.parseYml.bind(this),
       onReset: this.reset.bind(this)
     };

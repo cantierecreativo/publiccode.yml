@@ -10,21 +10,24 @@ import img_upload from "../../asset/img/load.svg";
 import img_download from "../../asset/img/download.svg";
 import img_dots from "../../asset/img/dots.svg";
 import img_xx from "../../asset/img/xx.svg";
-
+import { FormattedMessage } from "react-intl";
 import { getRemoteYml } from "../utils/calls";
 import { getLabel } from "../contents/data";
+import { resetUrl } from "../store/load";
 
 function mapStateToProps(state) {
-  return { form: state.form };
+  return {
+    form: state.form
+    //load: state.load
+  };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    notify: data => dispatch(notify(data))
+    notify: data => dispatch(notify(data)),
+    resetUrl: () => dispatch(resetUrl())
   };
 };
-
-//const sampleUrl = `https://api.github.com/repos/italia/publiccode.yml/contents/version/0.1/example/publiccode.minimal.yml`;
 
 @connect(
   mapStateToProps,
@@ -47,10 +50,22 @@ export default class sidebar extends Component {
     this.setState({ remoteYml: e.target.value });
   }
 
-  async loadRemoteYaml(e) {
-    e.preventDefault();
+
+  componentWillMount() {
+    if (this.props.url) {
+      console.log("SIDEBAR  URL", this.props.url);
+      this.loadRemoteYaml(null, this.props.url);
+    }
+  }
+
+  async loadRemoteYaml(e = null, url = null) {
+    console.log("LOAD REMOTE URL");
+    if (e) e.preventDefault();
     const { onLoad, onReset } = this.props;
     let { remoteYml } = this.state;
+    if (url) {
+      remoteYml = url;
+    }
     this.showDialog(false);
 
     if (!remoteYml || !validator.isURL(remoteYml)) {
@@ -69,6 +84,10 @@ export default class sidebar extends Component {
     try {
       yaml = await getRemoteYml(remoteYml);
       onLoad(yaml);
+
+      if (url) {
+        this.props.resetUrl();
+      }
     } catch (error) {
       console.error(error);
       alert("error parsing remote yaml");
@@ -77,12 +96,10 @@ export default class sidebar extends Component {
 
   load(files) {
     const { onLoad, onReset } = this.props;
-    //has dom
     if (!files || !files[0]) {
       this.props.notify({ type: 1, msg: "File not found" });
       return;
     }
-    // let ext = files[0].name.split(".")[1];
     let ext = files[0].name.split(/[. ]+/).pop();
     if (ext != "yml" && ext != "yaml") {
       this.props.notify({ type: 1, msg: "File type not supported" });
@@ -139,20 +156,20 @@ export default class sidebar extends Component {
     return (
       <div className="sidebar">
         <div className="sidebar__title">
-          {fail == true ? "Errors" : "File YAML"}
+          {fail == true ? <FormattedMessage id={"errors"} /> : <FormattedMessage id={"file"} /> }
           {loading && <img src={img_dots} className="loading" />}
         </div>
 
         <div className="sidebar__body">
           {!fail &&
-            !yaml && <div className="sidebar__info">No code generated.</div>}
+            !yaml && <div className="sidebar__info"><FormattedMessage id={"no_code_generated"} /></div>}
           {fail &&
             errors && (
               <div className="sidebar__error">
                 {Object.keys(errors).map((e, i) => (
                   <div key={i}>
                     <img src={img_x} />
-                    {getLabel(allFields, e)}
+                    <FormattedMessage id={getLabel(allFields, e)} />
                   </div>
                 ))}
               </div>
@@ -193,7 +210,8 @@ export default class sidebar extends Component {
                     className="btn btn-primary btn-block"
                     onClick={() => document.getElementById("load_yaml").click()}
                   >
-                    <img src={img_upload} alt="upload" />Browse
+                    <img src={img_upload} alt="upload" />
+                    Browse
                   </button>
                 </div>
               </div>
@@ -212,7 +230,8 @@ export default class sidebar extends Component {
                       onChange={e => this.handleChange(e)}
                     />
                     <button type="submit" className="btn btn-primary">
-                      <img src={img_upload} alt="upload" />Load
+                      <img src={img_upload} alt="upload" />
+                      Load
                     </button>
                   </form>
                 </div>
@@ -236,7 +255,7 @@ export default class sidebar extends Component {
                   });
                 }}
               >
-                Copy
+                <FormattedMessage id={"copy"} />
               </span>
             </a>
           </div>
@@ -244,7 +263,7 @@ export default class sidebar extends Component {
             <a href="#">
               <img src={img_upload} alt="upload" />
               <span className="action" onClick={() => this.showDialog(true)}>
-                Upload
+                <FormattedMessage id={"upload"} />
               </span>
             </a>
           </div>
@@ -252,7 +271,7 @@ export default class sidebar extends Component {
             <a href="#">
               <img src={img_download} alt="dowload" />
               <span className="action" onClick={() => this.download(yaml)}>
-                Download
+                <FormattedMessage id={"download"} />
               </span>
             </a>
           </div>

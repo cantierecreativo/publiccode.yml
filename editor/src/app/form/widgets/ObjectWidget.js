@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import renderFields from "../renderFields";
-
+import { FormattedMessage } from "react-intl";
 const Widget = props => {
   let isSummary = false;
   if (props && props.schema && props.schema.isSummary) {
@@ -13,7 +13,8 @@ const Widget = props => {
       {props.showLabel &&
         props.label && (
           <legend className="control-label">
-            {props.label} {props.schema.required ? "*" : ""}
+            <FormattedMessage id={props.label} />
+            {props.schema.required ? "*" : ""}
           </legend>
         )}
 
@@ -23,7 +24,6 @@ const Widget = props => {
         props.fieldName && props.fieldName + ".",
         props.context
       )}
-
     </div>
   );
 };

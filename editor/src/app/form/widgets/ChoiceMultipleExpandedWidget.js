@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { Field } from "redux-form";
 import Info from "../../components/Info";
+import { FormattedMessage } from "react-intl";
 
 const zipObject = (props, values) =>
   props.reduce(
@@ -33,7 +34,8 @@ const renderChoice = field => {
   return (
     <div className={className}>
       <label className="control-label" htmlFor={"field-" + field.name}>
-        {field.label} {field.required ? "*" : ""}
+        <FormattedMessage id={field.label} />
+        {field.required ? "*" : ""}
       </label>
       {Object.entries(selectOptions).map(([value, name]) => {
         return (

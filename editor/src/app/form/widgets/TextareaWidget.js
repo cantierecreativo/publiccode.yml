@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Field } from "redux-form";
 import Info from "../../components/Info";
+import { FormattedMessage } from "react-intl";
 
 const renderInput = field => {
   const className = classNames([
@@ -12,7 +13,7 @@ const renderInput = field => {
   return (
     <div className={className}>
       <label className="control-label" htmlFor={"field-" + field.name}>
-        {field.label}
+        <FormattedMessage id={field.label} />
       </label>
       <textarea
         {...field.input}
