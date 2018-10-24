@@ -8,13 +8,12 @@ import { TextField, InputLabel } from "@material-ui/core";
 
 const Input = field => {
 
-  let error = field.meta.touched && field.meta.error;
+  let error = field.meta.touched && field.meta.error != null;
   const className = classNames([
     "form-group",
     { "has-error": error }
   ]);
   const label = field.showLabel ? <FormattedMessage id={field.label} /> : null;
-  console.log("ERROR?", field.fieldName, error);
 
   return (
     <div 

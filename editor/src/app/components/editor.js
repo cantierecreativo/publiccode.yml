@@ -66,6 +66,7 @@ export default class Index extends Component {
       blocks: null,
       elements: null,
       activeSection: 0,
+      setSection: 1,
       allFields: null,
       lastGen: null
     };
@@ -225,7 +226,8 @@ export default class Index extends Component {
       blocks: null,
       elements: null,
       collapse: false,
-      activeSection: null
+      activeSection: null,
+      setSection: 0
     });
     this.props.notify({ type: "info", msg: "Reset" });
     await this.initData();
@@ -338,7 +340,8 @@ export default class Index extends Component {
       currentValues,
       currentLanguage,
       search,
-      activeSection
+      activeSection,
+      setSection: 1
     });
 
     this.props.initialize(APP_FORM, currentValues);
@@ -364,7 +367,7 @@ export default class Index extends Component {
     } else {
       console.warn("inviewport");
     }
-    this.setState({ activeSection: activeSection });
+    this.setState({ activeSection: activeSection, setSection: 0 });
   }
 
   render() {
@@ -372,6 +375,7 @@ export default class Index extends Component {
       currentLanguage,
       blocks,
       activeSection,
+      setSection,
       country,
       allFields,
       lastGen
@@ -398,6 +402,7 @@ export default class Index extends Component {
               blocks && (
                 <EditorForm
                   activeSection={activeSection}
+                  setSection={setSection}
                   onAccordion={this.onAccordion.bind(this)}
                   onSubmit={this.generate.bind(this)}
                   data={blocks}
