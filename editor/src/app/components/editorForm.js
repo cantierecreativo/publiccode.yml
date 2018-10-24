@@ -102,8 +102,8 @@ const EditForm = props => {
   let countryProps = { country, switchCountry };
 
   let params = {
-    accordion: true,
-    defaultActiveKey: "0"
+    // accordion: true,
+    defaultActiveKey: Array.from(Array(data.length).keys(), x => x.toString())
   };
 
   if (activeSection) {
