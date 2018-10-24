@@ -23,6 +23,8 @@ import { FormattedMessage } from "react-intl";
 //   ));
 // };
 
+let currentSection = 0;
+
 const renderBlockItems = (items, id) => {
   return items.map((item, i) => {
     // getField(item);
@@ -37,8 +39,9 @@ const renderBlockItems = (items, id) => {
 };
 
 const renderHeader = props => {
+  console.log("currentSection", currentSection);
   let img_arrow = img_accordion_closed;
-  if (props.activeSection == props.block.index - 1) {
+  if (currentSection == props.block.index - 1) {
     img_arrow = img_accordion_open;
   }
   return (
@@ -53,15 +56,9 @@ const renderHeader = props => {
   );
 };
 
-const renderBlocks = (
-  blocks,
-  activeSection,
-  countryProps,
-  sectionsWithErrors
-) => {
+const renderBlocks = (blocks, countryProps, sectionsWithErrors) => {
   return blocks.map((block, i) => {
     let last = blocks.length === i + 1;
-    //let cn = activeSection == i ? "block_heading--active" : '';
     let hasError = sectionsWithErrors.indexOf(i) >= 0;
     let c = {
       showArrow: false
@@ -75,7 +72,7 @@ const renderBlocks = (
         id={`section_${i}`}
         key={i}
         {...c}
-        header={renderHeader({ block, hasError, activeSection })}
+        header={renderHeader({ block, hasError })}
       >
         {last && <CountrySwitcher {...countryProps} />}
         <div className="block">{renderBlockItems(block.items, i)}</div>
@@ -93,6 +90,7 @@ const EditForm = props => {
     data,
     errors,
     activeSection,
+    setSection,
     country,
     switchCountry,
     allFields,
@@ -106,9 +104,11 @@ const EditForm = props => {
     defaultActiveKey: "0"
   };
 
-  if (activeSection) {
+  if (setSection && activeSection) {
     params.activeKey = activeSection == -1 ? "0" : activeSection;
+    currentSection = params.activeKey;
   }
+  currentSection = activeSection;
 
   let sectionsWithErrors = [];
   //submitFailed &&
@@ -125,8 +125,14 @@ const EditForm = props => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Collapse onChange={props.onAccordion} {...params}>
-          {renderBlocks(data, activeSection, countryProps, sectionsWithErrors)}
+        <Collapse
+          onChange={index => {
+            props.onAccordion(index);
+            currentSection = index == null ? -1 : index;
+          }}
+          {...params}
+        >
+          {renderBlocks(data, countryProps, sectionsWithErrors)}
         </Collapse>
       </form>
     </div>
